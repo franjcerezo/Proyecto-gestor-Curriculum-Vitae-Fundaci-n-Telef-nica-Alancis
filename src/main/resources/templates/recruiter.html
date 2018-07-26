@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Recruiter</title>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div th:if="${jobOfferList != null}">
+		<h1>Tus ofertas</h1>
+		<ul>
+			<th:block th:object="${jobOfferList}"
+				th:each="list : ${jobOfferList}">
+
+				<li th:text="${list.job}" style=""></li>
+
+				<a th:href="@{/jobOffer/edit/{id}(id=${list.id})}"> <span
+					class="glyphicon glyphicon-edit" data-toggle="tooltip"
+					data-placement="top" title="Edit Task"></span></a>
+        &nbsp; &nbsp;
+         <a th:href="@{/jobOffer/delete/{id}(id=${list.id})}"> <span
+					class="glyphicon glyphicon-trash" data-toggle="tooltip"
+					data-placement="top" title="Delete"></span></a>
+
+			</th:block>
+		</ul>
+	</div>
+
+	<a th:href="@{/jobOffer}" class="fa fa pull-left">
+		<button>Añadir oferta</button>
+	</a>
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<a th:href="@{/offers}" class="fa fa pull-left">
+		<button>Ver Ofertas</button>
+	</a>
+	<br>
+
+	<div th:if="${educationList != null}">
+		<h1>Tus educaciones</h1>
+		<ul>
+			<th:block th:object="${educationList}"
+				th:each="list : ${educationList}">
+
+				<li th:text="${list.education}" style=""></li>
+
+				<a th:href="@{/education/edit/{id}(id=${list.id})}"> <span
+					class="glyphicon glyphicon-edit" data-toggle="tooltip"
+					data-placement="top" title="Edit Task"></span></a>
+        &nbsp; &nbsp;
+         <a th:href="@{/education/delete/{id}(id=${list.id})}"> <span
+					class="glyphicon glyphicon-trash" data-toggle="tooltip"
+					data-placement="top" title="Delete"></span></a>
+
+
+
+
+
+
+
+
+			</th:block>
+		</ul>
+
+		<a th:href="@{/education}" class="fa fa pull-left">
+			<button>Añadir Educación</button>
+		</a>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+
+	<div th:if="${experienceList != null}">
+		<h1>Tus experiencias</h1>
+		<ul>
+			<th:block th:object="${experienceList}"
+				th:each="list : ${experienceList}">
+
+				<li th:text="${list.job}" style=""></li>
+
+
+
+
+
+			</th:block>
+		</ul>
+		<a th:href="@{/experience}" class="fa fa pull-left">
+			<button>Añadir experiencia</button>
+		</a>
+	</div>
+
+
+
+
+
+</body>
+</html>

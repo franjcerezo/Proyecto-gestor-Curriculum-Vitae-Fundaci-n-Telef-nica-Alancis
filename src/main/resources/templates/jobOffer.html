@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+<title>Oferta de Trabajo</title>
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="tab-content">
+
+
+		<div class="separator"></div>
+		<div class="row">
+			<div class="container">
+				<div class="login-register-form-section">
+					<br> <br> <br> <br> <br>
+
+					<form id="registerForm" th:object="${reqJobOffer}"
+						th:action="@{/jobOffer/save}" method="post"
+						class="form-horizontal">
+						<h1>Crea tu oferta</h1>
+
+						<input type="hidden" th:field="*{idRecruiter}">
+
+						<div class="form-group">
+							<label for="certification">Trabajo</label> <input required
+								th:field="*{job}" type="text" name="newcv" id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Compañia</label> <input required
+								th:field="*{company}" type="text" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Descripción</label> <input required
+								th:field="*{description}" type="text" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Ciudad</label> <input required
+								th:field="*{city}" type="text" name="newcv" id="certification">
+						</div>
+
+						<label for="educatorcountry">País</label> <select
+							th:field="*{country}" required name="newcv" id="educatorcountry">
+							<option th:each="c : ${countryList}" th:value="${c.id}"
+								th:text="${c.country}"></option>
+
+						</select>
+
+						<div class="form-group">
+							<label for="certification">Educación</label> <input required
+								th:field="*{education}" type="text" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Habilidades</label> <input required
+								th:field="*{skills}" type="text" name="newcv" id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Idioma necesario</label> <input
+								required th:field="*{languages}" type="text" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Experiencia</label> <input required
+								th:field="*{workExperience}" type="text" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Fecha publicación</label> <input
+								required th:field="*{publicationDate}" type="date" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="certification">Fecha finalización</label> <input
+								required th:field="*{endDate}" type="date" name="newcv"
+								id="certification">
+						</div>
+
+						<div class="form-group">
+							<label for="classes">Comentarios (opcional)</label> <br>
+							<textarea th:field="*{comments}" name="newcv" id="classes"></textarea>
+						</div>
+
+
+						<div class="form-group">
+							<label for="educatorcountry">Estado de oferta</label> <select
+								th:field="*{offerStatus}" required name="newcv"
+								id="educatorcountry">
+								<option value="OPEN">Abierta</option>
+								<option value="IN PROGRESS">En progreso</option>
+								<option value="ASSIGNED">Asignada</option>
+								<option value="CLOSED">Cerrada</option>
+
+							</select>
+						</div>
+
+
+
+
+
+
+
+
+						<input type="submit" class="btn btn-secondary"
+							value="Crear Oferta">
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

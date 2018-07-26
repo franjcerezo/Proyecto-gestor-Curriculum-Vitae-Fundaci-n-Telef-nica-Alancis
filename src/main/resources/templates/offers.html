@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<h1>Ofertas disponibles</h1>
+	<div th:if="${listOffers != null}">
+
+		<ul>
+			<th:block th:object="${listOffers}" th:each="list : ${listOffers}">
+
+
+
+				<li th:text="${list.job}" style=""></li>
+				<a th:href="@{/detailOffer/{id}(id=${list.id})}">
+					<button>Registrate</button>
+				</a>
+				<!--      <a th:href="@{/education/edit/{id}(id=${list.id})}"> -->
+				<!--       <span class="glyphicon glyphicon-edit" data-toggle="tooltip" -->
+				<!--        data-placement="top" title="Edit Task"></span></a> -->
+				<!--         &nbsp; &nbsp; -->
+				<!--          <a th:href="@{/education/delete/{id}(id=${list.id})}"> -->
+				<!--         <span class="glyphicon glyphicon-trash" data-toggle="tooltip" -->
+				<!--         data-placement="top" title="Delete"></span></a>                         -->
+
+
+
+
+
+
+
+
+			</th:block>
+		</ul>
+	</div>
+	<a th:href="@{/home}" class="fa fa pull-left">
+		<button>Volver</button>
+	</a>
+	<br>
+
+
+
+</body>
+</html>

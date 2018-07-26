@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Detalle Oferta</title>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<h1>Ofertas disponibles</h1>
+
+
+	<ul>
+		<th:block th:object="${offer}">
+
+
+			<strong>Puesto: </strong>
+			<li th:text="*{job}" style=""></li>
+			<strong>Formación necesaria: </strong>
+			<li th:text="*{education}" style=""></li>
+			<strong>Competencias necesarias: </strong>
+			<li th:text="*{skills}" style=""></li>
+			<strong>Idioma necesario: </strong>
+			<li th:text="*{languages}" style=""></li>
+			<strong>Experiencia necesaria: </strong>
+			<li th:text="*{workExperience}" style=""></li>
+
+			<a th:href="@{/registerOffer/{id}(id=*{id})}" class="fa fa pull-left">
+				<button>Registrate en esta oferta</button>
+			</a>
+
+		</th:block>
+	</ul>
+
+	<br>
+	<br>
+
+	<a th:href="@{/home}" class="fa fa pull-left">
+		<button>Volver</button>
+	</a>
+	<br>
+
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="spring-boot thymeleaf | home ">
+<div th:replace="fragments/header :: header-css"></div>
+<title>Educación</title>
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="tab-content">
+
+
+		<div class="separator"></div>
+		<div class="row">
+			<div class="container">
+				<div class="login-register-form-section">
+
+
+					<form id="registerForm" th:object="${reqEducation}"
+						th:action="@{/education/save}" method="post"
+						class="form-horizontal">
+						<h1>Educación</h1>
+
+
+						<div class="form-group">
+							<label for="certification">Título de la cualificación
+								obtenida</label> <input required th:field="*{education}" type="text"
+								name="newcv" id="certification">
+						</div>
+
+
+						<div class="form-group">
+							<label for="initialdate">De</label> <input required
+								th:field="*{startDate}" type="date" name="newcv"
+								id="initialdate"> <label for="finaldate">A</label> <input
+								required th:field="*{endDate}" type="date" name="newcv"
+								id="finaldate"> <label for="current">Actualmente
+								estudio aquí</label> <input type="checkbox" name="newcv" id="current">
+
+
+							<fieldset>
+								<legend>Organización que ha impartido la educación</legend>
+
+								<label for="educatorname">Nombre</label> <input required
+									th:field="*{studyCentre}" type="text" name="newcv"
+									id="educatorname"> <label for="educatorlocation">Localidad</label>
+								<input required th:field="*{city}" type="text" name="newcv"
+									id="educatorlocation"> <label for="educatorcountry">País</label>
+								<select th:field="*{country}" required name="newcv"
+									id="educatorcountry">
+									<option th:each="c : ${countryList}" th:value="${c.id}"
+										th:text="${c.country}"></option>
+
+								</select>
+
+							</fieldset>
+							<!-- Si se marca el checkbox current se deshabilita la opciÃ³n de marcar fecha final (hay que hacerlo con Javascript) -->
+						</div>
+
+						<div class="form-group">
+
+
+
+							<!-- Con Javascript haremos que el siguiente pÃ¡rrafo se muestre al marcar la checkbox -->
+
+
+
+
+
+
+						</div>
+						<div class="form-group">
+							<label for="level">Nivel EQF-MEC o nacional</label> <select
+								required th:field="*{eqfMecLevel}" class="form-control"
+								name="newcv" id="level">
+								<option value="Nivel 1 EQF-MEC">Nivel 1 EQF-MEC</option>
+								<option value="Level 2 EQF-MEC">Nivel 2 EQF-MEC</option>
+								<option value="Nivel 3 EQF-MEC">Nivel 3 EQF-MEC</option>
+								<option value="Nivel 4 EQF-MEC">Nivel 4 EQF-MEC</option>
+								<option value="Nivel 5 EQF-MEC">Nivel 5 EQF-MEC</option>
+								<option value="Nivel 6 EQF-MEC">Nivel 6 EQF-MEC</option>
+								<option value="Nivel 7 EQF-MEC">Nivel 7 EQF-MEC</option>
+								<option value="Nivel 8 EQF-MEC">Nivel 8 EQF-MEC</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="classes">Descripción (opcional)</label> <br>
+							<textarea th:field="*{description}" name="newcv" id="classes"></textarea>
+							<!-- DeberÃ­a tener mÃ¡s opciones de texto como ocurre en la descripciÃ³n del objetivo profesional de tipodeaplicacion.html -->
+						</div>
+
+
+
+
+
+						<input type="submit" class="btn btn-secondary" value="Enviar">
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
